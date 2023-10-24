@@ -68,11 +68,18 @@ int main(void) {
 			cout << Dates[i] << endl;
 		}
 
-
 		delete[] Dates;
 		File.close();
 		}
 	else {
 		cout << "Error - file not found" << '\n';
 	}
+
+
+	DateTime when_ester1 = "2023-01-01";
+	cout << '\n' << "ester date in 2023 => " << when_ester1.easter() << endl;
+	DateTime when_ester2 = "2024-01-01";
+	cout << "ester date in 2024 => " << when_ester2.easter() << endl;
+	
+
 }

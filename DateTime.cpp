@@ -344,7 +344,7 @@ string DateTime::weekday() {
 	int& days = arg[2];
 
 	if (years <= 0 or months <= 0 or days <= 0) {
-		return "Error wrong data";
+		return "Error - swrong data";
 	}
 
 	int LeapYears = (int)years / 4;
@@ -378,6 +378,38 @@ string DateTime::weekday() {
 		return "Saturday";
 	case 7:
 		return "Sunday";
+	}
+}
+
+
+// count easter date
+DateTime DateTime::easter() {
+	// give names for all arguments
+	const int& year = arg[0];
+	// ester date
+	DateTime Ester;
+	if (year < 0) {
+		cout << "Error - wrong date";
+		Ester = "0000-00-00";
+		return Ester;
+	}
+
+	int a = (19 * (year % 19) + 15) % 30;
+	int b = (2 * (year % 4) + 4 * (year % 7) + 6 * a + 6) % 7;
+
+	if (a + b > 10) {
+		int day = a + b - 9;
+		string ester = to_string(year) + "-04-" + to_string(day);
+		Ester = ester;
+		Ester += 13;
+		return Ester;
+	}
+	else {
+		int day = a + b + 22;
+		string ester = to_string(year) + "-03-" + to_string(day);
+		Ester = ester;
+		Ester += 13;
+		return Ester;
 	}
 }
 

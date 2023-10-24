@@ -82,6 +82,9 @@ public:
 	// count day of week
 	string weekday();
 
+	// count easter date
+	DateTime easter();
+
 	// user can't use
 private:
 	// countin total number of days
